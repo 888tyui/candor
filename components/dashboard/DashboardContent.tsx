@@ -167,8 +167,8 @@ export default function DashboardContent({
             padding: "10px 16px",
             marginBottom: 16,
             borderRadius: 10,
-            background: "rgba(99,102,241,0.06)",
-            border: "1px solid rgba(99,102,241,0.12)",
+            background: "rgba(var(--accent-indigo-rgb), 0.06)",
+            border: "1px solid rgba(var(--accent-indigo-rgb), 0.12)",
             fontSize: 12,
             fontWeight: 500,
             color: "var(--accent-indigo)",
@@ -186,7 +186,7 @@ export default function DashboardContent({
           border: "1px solid var(--border-subtle)",
           background: "var(--bg-surface)",
           overflow: "hidden",
-          boxShadow: "0 16px 64px rgba(0,0,0,0.3), 0 0 0 1px rgba(99,102,241,0.05)",
+          boxShadow: "0 16px 64px rgba(0,0,0,0.3), 0 0 0 1px rgba(var(--accent-indigo-rgb), 0.05)",
         }}
       >
         {/* Tab bar */}
@@ -241,7 +241,7 @@ export default function DashboardContent({
                   gap: 6,
                   fontSize: 11,
                   fontWeight: 600,
-                  color: isLive ? "#22c55e" : "var(--text-muted)",
+                  color: isLive ? "var(--status-success)" : "var(--text-muted)",
                 }}
               >
                 <span
@@ -249,7 +249,7 @@ export default function DashboardContent({
                     width: 6,
                     height: 6,
                     borderRadius: "50%",
-                    background: isLive ? "#22c55e" : "var(--text-muted)",
+                    background: isLive ? "var(--status-success)" : "var(--text-muted)",
                     animation: isLive ? "pulse 2s infinite" : "none",
                   }}
                 />
@@ -264,8 +264,8 @@ export default function DashboardContent({
                   width: 28,
                   height: 28,
                   borderRadius: 8,
-                  background: "rgba(99,102,241,0.08)",
-                  border: "1px solid rgba(99,102,241,0.15)",
+                  background: "rgba(var(--accent-indigo-rgb), 0.08)",
+                  border: "1px solid rgba(var(--accent-indigo-rgb), 0.15)",
                   color: "var(--accent-indigo)",
                   cursor: "pointer",
                 }}
@@ -296,7 +296,7 @@ export default function DashboardContent({
           <Stat
             label="Errors"
             value={errorCount.toString()}
-            color={errorCount > 0 ? "#ef4444" : "var(--text-muted)"}
+            color={errorCount > 0 ? "var(--status-error)" : "var(--text-muted)"}
           />
         </div>
 
@@ -319,7 +319,7 @@ export default function DashboardContent({
                       borderRadius: 10,
                       fontSize: 13,
                       background: "rgba(17,19,38,0.5)",
-                      border: "1px solid rgba(99,102,241,0.1)",
+                      border: "1px solid rgba(var(--accent-indigo-rgb), 0.1)",
                     }}
                   >
                     <span style={{ color: "var(--text-muted)" }}>$</span>
@@ -366,7 +366,7 @@ export default function DashboardContent({
                       borderRadius: 10,
                       fontSize: 13,
                       background: "rgba(17,19,38,0.5)",
-                      border: "1px solid rgba(99,102,241,0.1)",
+                      border: "1px solid rgba(var(--accent-indigo-rgb), 0.1)",
                     }}
                   >
                     <Terminal size={14} color="var(--text-muted)" />
@@ -474,13 +474,13 @@ const TimelineView = ({
             key={evt.id}
             style={{
               padding: "8px 20px",
-              borderBottom: "1px solid rgba(99,102,241,0.04)",
+              borderBottom: "1px solid rgba(var(--accent-indigo-rgb), 0.04)",
               cursor: "pointer",
               transition: "background 0.15s",
               animation: "event-enter 0.3s ease-out",
             }}
             onClick={() => onToggle(evt.id)}
-            onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(99,102,241,0.04)")}
+            onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(var(--accent-indigo-rgb), 0.04)")}
             onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
           >
             <div style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 12 }}>
@@ -490,9 +490,9 @@ const TimelineView = ({
                 <CaretRight size={10} color="var(--text-muted)" />
               )}
               {evt.status === "success" ? (
-                <CheckCircle size={14} weight="fill" color="#22c55e" />
+                <CheckCircle size={14} weight="fill" color="var(--status-success)" />
               ) : (
-                <XCircle size={14} weight="fill" color="#ef4444" />
+                <XCircle size={14} weight="fill" color="var(--status-error)" />
               )}
               <span
                 className="font-[family-name:var(--font-ibm-plex-mono)]"
@@ -506,7 +506,7 @@ const TimelineView = ({
                   fontSize: 10,
                   padding: "2px 8px",
                   borderRadius: 4,
-                  background: "rgba(99,102,241,0.08)",
+                  background: "rgba(var(--accent-indigo-rgb), 0.08)",
                   color: "var(--accent-indigo)",
                 }}
               >
@@ -523,7 +523,7 @@ const TimelineView = ({
                 className="font-[family-name:var(--font-ibm-plex-mono)]"
                 style={{
                   fontSize: 10,
-                  color: evt.latencyMs > 500 ? "#f59e0b" : "var(--text-muted)",
+                  color: evt.latencyMs > 500 ? "var(--status-warning)" : "var(--text-muted)",
                 }}
               >
                 {evt.latencyMs}ms
@@ -543,7 +543,7 @@ const TimelineView = ({
                   marginLeft: 24,
                   padding: 12,
                   borderRadius: 8,
-                  background: "rgba(6,7,15,0.6)",
+                  background: "rgba(var(--bg-deep-rgb), 0.6)",
                   border: "1px solid var(--border-subtle)",
                   fontSize: 11,
                   lineHeight: 1.6,
@@ -560,7 +560,7 @@ const TimelineView = ({
                 </div>
                 <div>
                   <span style={{ color: "var(--text-muted)" }}>result: </span>
-                  <span style={{ color: evt.status === "error" ? "#ef4444" : "#22c55e" }}>
+                  <span style={{ color: evt.status === "error" ? "var(--status-error)" : "var(--status-success)" }}>
                     {evt.result}
                   </span>
                 </div>
@@ -605,11 +605,11 @@ function SessionsView({ sessions }: { sessions: DemoSession[] }) {
             <tr
               key={s.id}
               style={{
-                borderBottom: "1px solid rgba(99,102,241,0.04)",
+                borderBottom: "1px solid rgba(var(--accent-indigo-rgb), 0.04)",
                 cursor: "pointer",
                 transition: "background 0.15s",
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(99,102,241,0.04)")}
+              onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(var(--accent-indigo-rgb), 0.04)")}
               onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
             >
               <td style={{ padding: "12px 16px" }}>
@@ -645,7 +645,7 @@ function SessionsView({ sessions }: { sessions: DemoSession[] }) {
               <td style={{ padding: "12px 16px" }}>
                 <span
                   className="font-[family-name:var(--font-ibm-plex-mono)]"
-                  style={{ fontSize: 11, color: s.errorCount > 0 ? "#ef4444" : "#22c55e" }}
+                  style={{ fontSize: 11, color: s.errorCount > 0 ? "var(--status-error)" : "var(--status-success)" }}
                 >
                   {s.errorCount}
                 </span>
@@ -716,7 +716,7 @@ function CostsView({ events, sessions }: { events: DemoEvent[]; sessions: DemoSe
                   flex: 1,
                   height: 20,
                   borderRadius: 4,
-                  background: "rgba(99,102,241,0.06)",
+                  background: "rgba(var(--accent-indigo-rgb), 0.06)",
                   overflow: "hidden",
                 }}
               >

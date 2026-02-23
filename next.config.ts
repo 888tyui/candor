@@ -5,6 +5,8 @@ const nextConfig: NextConfig = {
   // Produces a self-contained build that doesn't need node_modules
   output: "standalone",
 
+  serverExternalPackages: ["@prisma/client"],
+
   // Image optimization
   images: {
     formats: ["image/avif", "image/webp"],

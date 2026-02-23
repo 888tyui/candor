@@ -15,7 +15,8 @@ const features = [
     title: "MCP Proxy Interceptor",
     description:
       "Zero-config transparent proxy. Point your MCP client through localhost:3100 — every JSON-RPC message is captured without touching your agent code.",
-    color: "#06b6d4",
+    color: "var(--accent-cyan)",
+    colorRgb: "var(--accent-cyan-rgb)",
     gradient: "from-cyan-500/10 to-transparent",
   },
   {
@@ -23,7 +24,8 @@ const features = [
     title: "Live Event Timeline",
     description:
       "Real-time WebSocket feed of every tool call, resource read, and response. Filter by agent, tool, status, or time range as events stream in.",
-    color: "#6366f1",
+    color: "var(--accent-indigo)",
+    colorRgb: "var(--accent-indigo-rgb)",
     gradient: "from-indigo-500/10 to-transparent",
   },
   {
@@ -31,7 +33,8 @@ const features = [
     title: "Session Explorer",
     description:
       "Browse historical agent sessions with full event chains. Expand any request/response payload. See aggregate stats per session at a glance.",
-    color: "#8b5cf6",
+    color: "var(--accent-violet)",
+    colorRgb: "var(--accent-violet-rgb)",
     gradient: "from-violet-500/10 to-transparent",
   },
   {
@@ -39,7 +42,8 @@ const features = [
     title: "Cost Attribution",
     description:
       "Track estimated costs per session, per tool, and per time period. Set monthly budget alerts. Configurable rate tables for any LLM provider.",
-    color: "#3b82f6",
+    color: "var(--accent-blue)",
+    colorRgb: "var(--accent-blue-rgb)",
     gradient: "from-blue-500/10 to-transparent",
   },
   {
@@ -47,7 +51,8 @@ const features = [
     title: "Alert Rules",
     description:
       "Define custom rules: latency thresholds, cost limits, tool allowlists. Alerts surface in the dashboard and optionally fire webhooks.",
-    color: "#a855f7",
+    color: "var(--accent-purple)",
+    colorRgb: "var(--accent-purple-rgb)",
     gradient: "from-purple-500/10 to-transparent",
   },
 ];
@@ -153,8 +158,8 @@ export default function Features() {
               }}
               onMouseEnter={(e) => {
                 const el = e.currentTarget;
-                el.style.borderColor = `${feature.color}33`;
-                el.style.boxShadow = `0 12px 40px ${feature.color}12, inset 0 1px 0 ${feature.color}15`;
+                el.style.borderColor = `rgba(${feature.colorRgb}, 0.2)`;
+                el.style.boxShadow = `0 12px 40px rgba(${feature.colorRgb}, 0.07), inset 0 1px 0 rgba(${feature.colorRgb}, 0.08)`;
               }}
               onMouseLeave={(e) => {
                 const el = e.currentTarget;
@@ -171,8 +176,8 @@ export default function Features() {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  background: `${feature.color}12`,
-                  border: `1px solid ${feature.color}20`,
+                  background: `rgba(${feature.colorRgb}, 0.07)`,
+                  border: `1px solid rgba(${feature.colorRgb}, 0.12)`,
                   marginBottom: 20,
                 }}
               >

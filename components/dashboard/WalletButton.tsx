@@ -8,17 +8,21 @@ import {
   SignOutIcon as SignOut,
 } from "@phosphor-icons/react";
 
-export default function WalletButton({ size = "default" }: { size?: "default" | "large" }) {
+export default function WalletButton({ size = "default", onLogout }: { size?: "default" | "large"; onLogout?: () => void }) {
   const { connected, connecting, disconnect } = useWallet();
   const { setVisible } = useWalletModal();
 
   const handleClick = useCallback(() => {
     if (connected) {
-      disconnect();
+      if (onLogout) {
+        onLogout();
+      } else {
+        disconnect();
+      }
     } else {
       setVisible(true);
     }
-  }, [connected, disconnect, setVisible]);
+  }, [connected, disconnect, setVisible, onLogout]);
 
   const isLarge = size === "large";
 
@@ -43,8 +47,8 @@ export default function WalletButton({ size = "default" }: { size?: "default" | 
         }}
         onMouseEnter={(e) => {
           e.currentTarget.style.color = "var(--text-primary)";
-          e.currentTarget.style.borderColor = "rgba(99,102,241,0.3)";
-          e.currentTarget.style.background = "rgba(99,102,241,0.06)";
+          e.currentTarget.style.borderColor = "rgba(var(--accent-indigo-rgb), 0.3)";
+          e.currentTarget.style.background = "rgba(var(--accent-indigo-rgb), 0.06)";
         }}
         onMouseLeave={(e) => {
           e.currentTarget.style.color = "var(--text-secondary)";

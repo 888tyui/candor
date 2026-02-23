@@ -155,8 +155,8 @@ export default function Footer() {
               color: "var(--text-muted)",
               padding: "4px 12px",
               borderRadius: 6,
-              background: "rgba(99,102,241,0.04)",
-              border: "1px solid rgba(99,102,241,0.08)",
+              background: "rgba(var(--accent-indigo-rgb), 0.04)",
+              border: "1px solid rgba(var(--accent-indigo-rgb), 0.08)",
             }}
           >
             v1.0.0
@@ -189,21 +189,21 @@ function SocialButton({
         width: 36,
         height: 36,
         borderRadius: 10,
-        background: "rgba(99,102,241,0.06)",
-        border: "1px solid rgba(99,102,241,0.1)",
+        background: "rgba(var(--accent-indigo-rgb), 0.06)",
+        border: "1px solid rgba(var(--accent-indigo-rgb), 0.1)",
         color: "var(--text-secondary)",
         transition: "all 0.2s",
         textDecoration: "none",
       }}
       onMouseEnter={(e) => {
         e.currentTarget.style.color = "var(--text-primary)";
-        e.currentTarget.style.borderColor = "rgba(99,102,241,0.3)";
-        e.currentTarget.style.background = "rgba(99,102,241,0.1)";
+        e.currentTarget.style.borderColor = "rgba(var(--accent-indigo-rgb), 0.3)";
+        e.currentTarget.style.background = "rgba(var(--accent-indigo-rgb), 0.1)";
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.color = "var(--text-secondary)";
-        e.currentTarget.style.borderColor = "rgba(99,102,241,0.1)";
-        e.currentTarget.style.background = "rgba(99,102,241,0.06)";
+        e.currentTarget.style.borderColor = "rgba(var(--accent-indigo-rgb), 0.1)";
+        e.currentTarget.style.background = "rgba(var(--accent-indigo-rgb), 0.06)";
       }}
     >
       {children}

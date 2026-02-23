@@ -16,7 +16,8 @@ const steps = [
     title: "Install",
     command: "npm install -g @candor/proxy",
     description: "One command to install. Zero dependencies on your agent codebase.",
-    color: "#06b6d4",
+    color: "var(--accent-cyan)",
+    colorRgb: "var(--accent-cyan-rgb)",
   },
   {
     icon: Plugs,
@@ -24,7 +25,8 @@ const steps = [
     title: "Configure",
     command: "Route MCP through localhost:3100",
     description: "Swap one line in your MCP client config. Candor becomes the transparent middle layer.",
-    color: "#6366f1",
+    color: "var(--accent-indigo)",
+    colorRgb: "var(--accent-indigo-rgb)",
   },
   {
     icon: Play,
@@ -32,7 +34,8 @@ const steps = [
     title: "Start",
     command: "candor start",
     description: "The proxy launches alongside the dashboard. Your agents work exactly as before.",
-    color: "#8b5cf6",
+    color: "var(--accent-violet)",
+    colorRgb: "var(--accent-violet-rgb)",
   },
   {
     icon: ChartLineUp,
@@ -40,7 +43,8 @@ const steps = [
     title: "Observe",
     command: "Open localhost:3200",
     description: "Watch every tool call, resource read, and response stream in real time.",
-    color: "#a855f7",
+    color: "var(--accent-purple)",
+    colorRgb: "var(--accent-purple-rgb)",
   },
 ];
 
@@ -163,8 +167,8 @@ export default function HowItWorks() {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  background: `${step.color}10`,
-                  border: `1px solid ${step.color}25`,
+                  background: `rgba(${step.colorRgb}, 0.06)`,
+                  border: `1px solid rgba(${step.colorRgb}, 0.15)`,
                   marginBottom: 20,
                   position: "relative",
                 }}
@@ -180,7 +184,7 @@ export default function HowItWorks() {
                     fontWeight: 600,
                     color: step.color,
                     background: "var(--bg-surface)",
-                    border: `1px solid ${step.color}30`,
+                    border: `1px solid rgba(${step.colorRgb}, 0.19)`,
                     borderRadius: 6,
                     padding: "2px 6px",
                   }}
@@ -209,8 +213,8 @@ export default function HowItWorks() {
                   display: "inline-block",
                   fontSize: 11,
                   color: step.color,
-                  background: `${step.color}08`,
-                  border: `1px solid ${step.color}15`,
+                  background: `rgba(${step.colorRgb}, 0.03)`,
+                  border: `1px solid rgba(${step.colorRgb}, 0.08)`,
                   borderRadius: 8,
                   padding: "6px 12px",
                   marginBottom: 12,

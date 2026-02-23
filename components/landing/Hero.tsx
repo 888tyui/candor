@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Link from "next/link";
 import { ArrowDownIcon as ArrowDown, ArrowUpRightIcon as ArrowUpRight, GithubLogoIcon as GithubLogo } from "@phosphor-icons/react";
 import PrismVisual from "./PrismVisual";
 
@@ -84,8 +85,8 @@ export default function Hero() {
             fontWeight: 500,
             letterSpacing: "0.16em",
             textTransform: "uppercase" as const,
-            background: "rgba(99, 102, 241, 0.06)",
-            border: "1px solid rgba(99, 102, 241, 0.12)",
+            background: "rgba(var(--accent-indigo-rgb), 0.06)",
+            border: "1px solid rgba(var(--accent-indigo-rgb), 0.12)",
             color: "var(--accent-indigo)",
             marginBottom: 40,
           }}
@@ -167,10 +168,10 @@ export default function Hero() {
             marginBottom: 32,
           }}
         >
-          <a href="/dashboard" className="btn-primary">
+          <Link href="/dashboard" className="btn-primary">
             <span>Get Started</span>
             <ArrowUpRight size={16} weight="bold" />
-          </a>
+          </Link>
           <a
             href="https://github.com/candor-io/candor"
             target="_blank"
@@ -197,7 +198,7 @@ export default function Hero() {
               borderRadius: 12,
               fontSize: 14,
               background: "rgba(17, 19, 38, 0.5)",
-              border: "1px solid rgba(99, 102, 241, 0.1)",
+              border: "1px solid rgba(var(--accent-indigo-rgb), 0.1)",
             }}
           >
             <span style={{ color: "var(--text-muted)" }}>$</span>
