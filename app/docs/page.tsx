@@ -217,7 +217,15 @@ export default function DocsPage() {
       });
       if (current) {
         const [sec, sub] = current.split("/");
-        if (sec) setActiveSection(sec);
+        if (sec) {
+          setActiveSection(sec);
+          setExpandedSections((prev) => {
+            if (prev.has(sec)) return prev;
+            const next = new Set(prev);
+            next.add(sec);
+            return next;
+          });
+        }
         if (sub) setActiveSubsection(sub);
       }
     };
@@ -353,18 +361,16 @@ export default function DocsPage() {
             {/* Mobile sidebar toggle */}
             <button
               onClick={() => setSidebarOpen(!sidebarOpen)}
-              className="lg:hidden"
+              className="lg:!hidden flex items-center justify-center"
               style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
                 width: 36,
                 height: 36,
                 borderRadius: 8,
-                background: "transparent",
-                border: "1px solid var(--border-subtle)",
-                color: "var(--text-secondary)",
+                background: sidebarOpen ? "rgba(99,102,241,0.1)" : "transparent",
+                border: `1px solid ${sidebarOpen ? "rgba(99,102,241,0.25)" : "var(--border-subtle)"}`,
+                color: sidebarOpen ? "var(--accent-indigo)" : "var(--text-secondary)",
                 cursor: "pointer",
+                transition: "all 0.2s",
               }}
             >
               {sidebarOpen ? <X size={18} weight="bold" /> : <List size={18} weight="bold" />}
@@ -661,23 +667,27 @@ export default function DocsPage() {
         }}
       >
         {/* ─── Mobile sidebar overlay ─── */}
-        {sidebarOpen && (
-          <div
-            className="lg:hidden"
-            style={{
-              position: "fixed",
-              inset: 0,
-              top: 64,
-              zIndex: 40,
-              background: "rgba(6,7,15,0.6)",
-            }}
-            onClick={() => setSidebarOpen(false)}
-          />
-        )}
+        <div
+          className="lg:hidden"
+          style={{
+            position: "fixed",
+            top: 64,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            zIndex: 40,
+            background: "rgba(6,7,15,0.6)",
+            backdropFilter: "blur(4px)",
+            opacity: sidebarOpen ? 1 : 0,
+            pointerEvents: sidebarOpen ? "auto" : "none",
+            transition: "opacity 0.3s ease",
+          }}
+          onClick={() => setSidebarOpen(false)}
+        />
 
         {/* ─── Sidebar ─── */}
         <aside
-          className={`${sidebarOpen ? "translate-x-0" : "-translate-x-full"} lg:translate-x-0`}
+          className={`${sidebarOpen ? "translate-x-0" : "-translate-x-full"} lg:translate-x-0 docs-sidebar`}
           style={{
             position: "fixed",
             top: 64,
@@ -740,8 +750,16 @@ export default function DocsPage() {
                 <div key={section.id} style={{ marginBottom: 2 }}>
                   <button
                     onClick={() => {
-                      toggleSection(section.id);
-                      navigateTo(section.id, section.subsections?.[0]?.id);
+                      if (isActive) {
+                        toggleSection(section.id);
+                      } else {
+                        setExpandedSections((prev) => {
+                          const next = new Set(prev);
+                          next.add(section.id);
+                          return next;
+                        });
+                        navigateTo(section.id, section.subsections?.[0]?.id);
+                      }
                     }}
                     className="font-[family-name:var(--font-figtree)] docs-nav-item"
                     style={{
@@ -872,17 +890,15 @@ export default function DocsPage() {
         {/* ─── Content Area ─── */}
         <main
           ref={contentRef}
-          className="page-enter"
+          className="page-enter lg:ml-[280px]"
           style={{
             flex: 1,
-            marginLeft: 0,
             overflowY: "auto",
             height: "calc(100dvh - 64px)",
             padding: "40px 24px 120px",
           }}
         >
           <div
-            className="lg:ml-[280px]"
             style={{
               maxWidth: 820,
               margin: "0 auto",

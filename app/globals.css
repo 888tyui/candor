@@ -560,6 +560,20 @@ input:focus-visible {
   color: var(--text-primary) !important;
 }
 
+.docs-sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+.docs-sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.docs-sidebar::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.15);
+  border-radius: 4px;
+}
+.docs-sidebar::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 0.3);
+}
+
 .docs-code-block {
   transition: border-color 0.2s;
 }
