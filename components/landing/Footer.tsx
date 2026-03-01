@@ -17,15 +17,14 @@ const footerLinks = [
     links: [
       { label: "Documentation", href: "/docs" },
       { label: "API Reference", href: "/docs#api-reference" },
-      { label: "Changelog", href: "https://github.com/candor-io/candor/releases", external: true },
+      { label: "Changelog", href: "https://github.com/candordotcodes/candor/releases", external: true },
     ],
   },
   {
     title: "Community",
     links: [
-      { label: "GitHub", href: "https://github.com/candor-io/candor", external: true },
-      { label: "Twitter / X", href: "https://x.com/candor_io", external: true },
-      { label: "Discord", href: "https://discord.gg/candor", external: true },
+      { label: "GitHub", href: "https://github.com/candordotcodes/candor", external: true },
+      { label: "Twitter / X", href: "https://x.com/candordotcodes", external: true },
     ],
   },
 ];
@@ -75,10 +74,10 @@ export default function Footer() {
 
             {/* Social buttons */}
             <div style={{ display: "flex", gap: 8 }}>
-              <SocialButton href="https://x.com/candor_io" label="Twitter / X">
+              <SocialButton href="https://x.com/candordotcodes" label="Twitter / X">
                 <XLogo size={16} weight="bold" />
               </SocialButton>
-              <SocialButton href="https://github.com/candor-io/candor" label="GitHub">
+              <SocialButton href="https://github.com/candordotcodes/candor" label="GitHub">
                 <GithubLogo size={16} weight="bold" />
               </SocialButton>
             </div>
